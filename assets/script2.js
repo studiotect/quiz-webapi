@@ -1,48 +1,22 @@
-// use array of objects
+var timeRemaining = 5;
+var countdownEl = document.getElementById('countdown');
+var countdownInterval;
 
-// global event listener
+document.getElementById("startBtn").addEventListener("click",function(){
+  startBtn.setAttribute("style", "visibility: hidden");
+  startTimer();
+});
 
-//for loop for listing out answers
+function startTimer(){
+var countdownInterval = setInterval(updateCountdown, 1000);
 
-// User arrives at web page
-// Click the button
-// first question appears
-// timer starts
-// (listen for user to click on one of the answers)
-// When an answer is clicked
-// determine if the correct answer was clicked
-// if it was correct
-// if not correct
-// check if all questions are answered or if the timer reaches 0
-// save score and initials
 
-function startQuiz(){
-
+function updateCountdown(){
+  var seconds = timeRemaining;
+  countdownEl.textContent= `Time: ${seconds}`;
+  timeRemaining--;
+  if( timeRemaining === -1 ){
+    clearInterval(countdownInterval);
 }
-
-function quizTimer(){
-
 }
-
-function presentQuestion(){
-
 }
-
-function listenForAnswer(){
-
-}
-
-function checkAnswer(){
-  if (true){ // continue to next question
-  } else { // subtract time and continue to next question
-  }
-}
-function endGame(){
-
-}
-function highScore(){
-
-}
-
-
-
