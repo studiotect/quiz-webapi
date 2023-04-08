@@ -99,10 +99,10 @@ function userInitials (){
       ObjInitials: initials,
       ObjScore: timeRemaining,
     };
-  localStorage.setItem(scores)
-  console.log(scores)
+  localStorage.setItem("scores", JSON.stringify(scores));
+  JSON.parse(localStorage.getItem("scores"));
+  console.log(scores);
 }
-
 /*
 function scoreboard(){
   localStorage.getItem("Scores");
