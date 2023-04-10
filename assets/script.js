@@ -112,6 +112,7 @@ function scoreboard(){
   }
   var divEl = document.getElementById("scoreboard");
   var pEl = document.createElement("p");
+  pEl.textContent = JSON.parse(localStorage.getItem('scores'))[0].objInitials;
   scoreboardEl.setAttribute("style", "visibility: visible");
   pEl.textContent = displayInitials, displayScores;
   divEl.append(pEl);
