@@ -25,7 +25,6 @@ function addScoreToLocalStorage(){
       objInitials: initials,
       objScore: timeRemaining
     };
-  JSON.stringify(scoresNew);
   console.log(scores)
   console.log(scoresNew)
   scores = scores.push(scoresNew);
