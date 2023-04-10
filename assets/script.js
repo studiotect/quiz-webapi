@@ -16,17 +16,21 @@ var questionBank = [
   },
 ];
 var currentQuestion = 0;
-var points = 0;
-var timeRemaining = 10;
+//var points = 0;
+var timeRemaining = 15;
 var countdownEl = document.getElementById('countdown');
+var scoreboardEl = document.getElementById('scoreboard');
 var countdownInterval;
-var initials = "";
-var highscore = ""
+var initials;
+//var highscore = ""
+var scoreArray = []
+var scoresNew;
+var scores = JSON.parse(localStorage.getItem('scores')) || [];
 
 document.getElementById("startBtn").addEventListener("click",function(){
   startBtn.setAttribute("style", "visibility: hidden");
   question.setAttribute("style", "visibility: visible");
-  countdownEl.setAttribute("style", "visibility: visible");
+  countdownEl.setAttribute("style", "visibility: visible"); 
   startTimer();
   displayQuestion();
 })
@@ -60,7 +64,7 @@ function displayQuestion() {
 
 function choiceClick(event){
   if (questionBank[currentQuestion].answer==event.target.dataset.choice){
-    points=points+50;
+    //points=points+50;
     console.log("correct")
   }
   else {
@@ -77,50 +81,37 @@ function choiceClick(event){
   }
 }
 function quizEnd(){
+  clearInterval(countdownInterval);
+  question.setAttribute("style", "visibility: hidden");
+  countdownEl.setAttribute("style", "visibility: hidden");
+  var divEl = document.getElementById("scoreboard");
+  userInitials();
+}
+
+function userInitials (){
+  initials = prompt("Game Over! Enter Your Initials")
+  console.log(initials)
+  addScoreToLocalStorage();
+}
+function addScoreToLocalStorage(){
+  scores.push({
+    objInitials: initials,
+    objScore: timeRemaining
+  })
+  localStorage.setItem("scores", JSON.stringify(scores))
+  scoreboard();
+}
+
+function scoreboard(){
   var divEl = document.getElementById("scoreboard");
   var pEl = document.createElement("p");
-  //pEl.textContent = `Score: ${points}`;
-  //console.log(pEl);
-  //divEl.append(pEl);
-  question.setAttribute("style", "visibility: invisible");
-  clearInterval(countdownInterval);
-  userInitials();
-  var p1El = document.createElement("p");
-  divEl.append(p1El);
-  console.log(localStorage.getItem("Initials"))
-  p1El.textContent = localStorage.getItem("Initials");
-  //pEl.setAttribute("style",  "visibility: visible")
+  scoreboardEl.setAttribute("style", "visibility: visible");
+  pEl.textContent = JSON.parse(localStorage.getItem('scores'));
+  divEl.append(pEl);
+  console.log(pEl)
+  console.log(pEl.textContent)
+  console.log(divEl)
+  //var p1El = document.createElement("p");
+  //console.log(localStorage.getItem("Initials"))
+  //p1El.textContent = localStorage.getItem("Initials");
 }
-function userInitials (){
-  var initials = prompt("Game Over! Enter Your Initials")
-  console.log(initials)
-  var scores =
-    {
-      ObjInitials: initials,
-      ObjScore: timeRemaining,
-    };
-  localStorage.setItem("scores", JSON.stringify(scores));
-  JSON.parse(localStorage.getItem("scores"));
-  console.log(scores);
-}
-/*
-function scoreboard(){
-  localStorage.getItem("Scores");
-
-
-
-getItem in local Storage
-add the new score to Array
-stringify 
-setItem to local Storage
-
-
-get item from local Storage
-parse item
-display
-
-
-
-
-//console.log(event.target)
-*/
