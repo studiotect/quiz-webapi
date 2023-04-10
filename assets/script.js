@@ -105,13 +105,15 @@ function addScoreToLocalStorage(){
 function scoreboard(){
   let i = 0;
   while (i < scores.length) {
-    console.log(scores[i].objInitials);
-    console.log(scores[i].objScore);i++;
+    var displayInitials = (scores[i].objInitials);
+    var displayScores = (scores[i].objScore);i++;
+    console.log(displayInitials);
+    console.log(displayScores);
   }
   var divEl = document.getElementById("scoreboard");
   var pEl = document.createElement("p");
   scoreboardEl.setAttribute("style", "visibility: visible");
-  pEl.textContent = JSON.parse(localStorage.getItem('scores'));
+  pEl.textContent = displayInitials, displayScores;
   divEl.append(pEl);
   console.log(pEl)
   console.log(pEl.textContent)
