@@ -1,11 +1,12 @@
 var initials;
 var timeRemaining = 20;
 var scoresNew;
-var scores = 
+var scores =[
 {
-  ObjInitials: "ted",
-  ObjScore: 6
-};
+  objInitials: "ted",
+  objScore: 6
+}
+];
 
 localStorage.setItem("scores", JSON.stringify(scores));
 
@@ -18,13 +19,16 @@ function userInitials (){
 addScoreToLocalStorage();
 function addScoreToLocalStorage(){
   var scores = localStorage.getItem("scores");
+  scores = JSON.parse(scores);
   var scoresNew =
     {
-      ObjInitials: initials,
-      ObjScore: timeRemaining
+      objInitials: initials,
+      objScore: timeRemaining
     };
   JSON.stringify(scoresNew);
-  var scores = scores.concat(scoresNew);
+  console.log(scores)
+  console.log(scoresNew)
+  scores = scores.push(scoresNew);
   localStorage.setItem("scores", JSON.stringify(scores));
 
 
