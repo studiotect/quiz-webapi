@@ -1,28 +1,61 @@
 var questionBank = [
   {
-    text: "What is the keyword to define a variable?",
-    choices: ["If", "var", "else", "for"],
-    answer: 1
+    text: "Which of the following is the state flower of Minnesota?",
+    choices: ["showy pink lady slipper", "yellow dandelion", "ered rose", "sunflower"],
+    answer: 0
   },
   {
-    text: "What is the question 2?",
-    choices: ["c1", "c2", "c3", "c4"],
+    text: "What was the original name of St. Paul?",
+    choices: ["Pig's Eye landing", "Mendota", "St. Francis", "St. Anthony"],
+    answer: 0
+  },
+  {
+    text: "Which famous cereal was created in Minnesota?",
+    choices: ["Frosted Flakes", "Fruit Loops", "Wheaties"],
+    answer: 2
+  },
+  {
+    text: "What Minnesota company invented Post-it Notes?",
+    choices: ["Medtronic", "Deluxe Corporation", "Patterson Company", "3M"],
     answer: 3
   },
   {
-    text: "What is the question 3?",
-    choices: ["g1", "g2", "g3"],
+    text: "On what Minnesota lake was water skiing invented in 1922?",
+    choices: ["Lake Minnetonka", "Mille Lacs Lake", "Lake Pepin", "Lake Superior"],
+    answer: 2
+  },
+  {
+    text: "What is the population of the smallest town (Funkley) in Minnesota?",
+    choices: ["105", "68", "5", "537","94"],
+    answer: 2
+  },
+  {
+    text: "What is the state fish of Minnesota?",
+    choices: ["Sunfish", "Walleye", "Northern Pike"],
+    answer: 1
+  },
+  {
+    text: "Which NFL team has the most division championships in the NFC North?",
+    choices: ["Greenbay Packers", "Chicago Bears", "Minnesota Vikings", "Detroit Lions"],
+    answer: 2
+  },
+  {
+    text: "How many inches of snow fell during the Halloween Blizzard of 1991?",
+    choices: ["28", "30", "33", "39"],
+    answer: 0
+  },
+  {
+    text: "What Minnesota town did Bob Dylan grow up?",
+    choices: ["Hibbing", "Duluth", "Minneapolis", "Minnetonka"],
     answer: 0
   },
 ];
 var currentQuestion = 0;
-//var points = 0;
-var timeRemaining = 15;
+var timeRemaining = 90;
 var countdownEl = document.getElementById('countdown');
 var scoreboardEl = document.getElementById('scoreboard');
 var countdownInterval;
 var initials;
-//var highscore = ""
 var scoreArray = []
 var scoresNew;
 var scores = JSON.parse(localStorage.getItem('scores')) || [];
@@ -64,13 +97,9 @@ function displayQuestion() {
 
 function choiceClick(event){
   if (questionBank[currentQuestion].answer==event.target.dataset.choice){
-    //points=points+50;
-    console.log("correct")
   }
   else {
     timeRemaining=timeRemaining-5;
-    console.log("wrong")
-    console.log("Time = ", timeRemaining);
   }
 
   currentQuestion++;
@@ -84,13 +113,11 @@ function quizEnd(){
   clearInterval(countdownInterval);
   question.setAttribute("style", "visibility: hidden");
   countdownEl.setAttribute("style", "visibility: hidden");
-  var divEl = document.getElementById("scoreboard");
   userInitials();
 }
 
 function userInitials (){
   initials = prompt("Game Over! Enter Your Initials")
-  console.log(initials)
   addScoreToLocalStorage();
 }
 function addScoreToLocalStorage(){
@@ -104,22 +131,14 @@ function addScoreToLocalStorage(){
 
 function scoreboard(){
   let i = 0;
-  while (i < scores.length) {
-    var displayInitials = (scores[i].objInitials);
-    var displayScores = (scores[i].objScore);i++;
+  while (i < scores.length-1) {
+    i++;
     var divEl = document.getElementById("scoreboard");
     var pEl = document.createElement("p");
     var leaderboard = JSON.parse(localStorage.getItem('scores'));
-    pEl.textContent = leaderboard[i].objInitials + " " + leaderboard[i].objScore;
+    console.log(leaderboard)
+    pEl.textContent = leaderboard[i].objInitials + " " + leaderboard[i].objScore + "seconds";
     divEl.append(pEl);
-    console.log(displayInitials);
-    console.log(displayScores);
   }
   scoreboardEl.setAttribute("style", "visibility: visible");
-  console.log(pEl)
-  console.log(pEl.textContent)
-  console.log(divEl)
-  //var p1El = document.createElement("p");
-  //console.log(localStorage.getItem("Initials"))
-  //p1El.textContent = localStorage.getItem("Initials");
 }

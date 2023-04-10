@@ -6,11 +6,6 @@
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
-```
-
-## Acceptance Criteria
-
-```
 GIVEN I am taking a code quiz
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
@@ -30,10 +25,12 @@ The following animation demonstrates the application functionality:
 
 ![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
 
-## Review
+## Screenshot
 
-You are required to submit BOTH of the following for review:
+![Here's a screenshot of the home page](./assets/Screenshot.jpg)
 
-* The URL of the functional, deployed application.
+## Links
 
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
+The live webpage can be viewed here: [https://studiotect.github.io/portfolio/](https://studiotect.github.io/quiz-webapi/)
+
+The repo can be viewed here: [https://github.com/studiotect/portfolio](https://github.com/studiotect/quiz-webapi)
