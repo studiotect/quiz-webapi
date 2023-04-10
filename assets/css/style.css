@@ -1,3 +1,24 @@
+#start {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#startBtn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 40px 75px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100px;
+}
 #question {
-  visibility: hidden; 
+  visibility: hidden;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); 
 }

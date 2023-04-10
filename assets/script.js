@@ -107,15 +107,15 @@ function scoreboard(){
   while (i < scores.length) {
     var displayInitials = (scores[i].objInitials);
     var displayScores = (scores[i].objScore);i++;
+    var divEl = document.getElementById("scoreboard");
+    var pEl = document.createElement("p");
+    var leaderboard = JSON.parse(localStorage.getItem('scores'));
+    pEl.textContent = leaderboard[i].objInitials + " " + leaderboard[i].objScore;
+    divEl.append(pEl);
     console.log(displayInitials);
     console.log(displayScores);
   }
-  var divEl = document.getElementById("scoreboard");
-  var pEl = document.createElement("p");
-  pEl.textContent = JSON.parse(localStorage.getItem('scores'))[0].objInitials;
   scoreboardEl.setAttribute("style", "visibility: visible");
-  pEl.textContent = displayInitials, displayScores;
-  divEl.append(pEl);
   console.log(pEl)
   console.log(pEl.textContent)
   console.log(divEl)
