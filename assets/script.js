@@ -104,7 +104,10 @@ function addScoreToLocalStorage(){
 
 function scoreboard(){
   let i = 0;
-  while (i < scores.length) {console.log(scores[i].objInitials);i++;}
+  while (i < scores.length) {
+    console.log(scores[i].objInitials);
+    console.log(scores[i].objScore);i++;
+  }
   var divEl = document.getElementById("scoreboard");
   var pEl = document.createElement("p");
   scoreboardEl.setAttribute("style", "visibility: visible");
